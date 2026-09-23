@@ -1,0 +1,12 @@
+# 构建产物
+build/
+.cache/
+*.obj
+*.o
+*.pdb
+
+# WebView2 SDK（本地解开的 NuGet 包）
+sdk/
+
+# 注意：根目录下的 mc-webview.exe / mc-webview-noproxy.exe / WebView2Loader.dll
+# 是有意提交的预编译产物，不要 ignore。
