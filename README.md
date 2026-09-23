@@ -35,13 +35,17 @@ WebView2Loader.dll       可选，放在 exe 旁边即启用官方加载器
 这也是本仓 exe 的导入表里看不到它的原因 —— 它是运行时 `LoadLibrary` 加载的。
 放了则优先用 DLL 里的实现。
 
-### 方式 1: xmake（唯一一条「一条命令就构建」的路）
+### 方式 1: xmake（推荐，需要 MinGW）
 
 ```bash
 xmake
 ```
 
-xmake 会自动拉取上游 `webview` 包，连 WebView2 SDK 一起带下来。
+`xmake.lua` 从 [lyco-mirror](https://github.com/lilyco-42/xmake-mirror) 取 `webview-mini`
+包（`webview.h` + 预编译 MinGW 静态库），**不需要 WebView2 SDK，也不需要 C++ 工具链**。
+实测一条 `xmake` 就能产出 GUI 子系统的 `mc-webview.exe`。
+
+包只有 MinGW 版；MSVC 请走方式 2。
 
 ### 方式 2: CMake
 
@@ -109,7 +113,7 @@ SetEnvironmentVariableW(L"WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", L"--no-proxy-s
 | `WebView2Loader.dll` | WebView2 官方加载器 (161 KB)，可选 |
 | `main.c` | 最小示例源码 |
 | `webview.h` | 单头文件 amalgamation (205 KB) |
-| `xmake.lua` | xmake 一键引入 |
+| `xmake.lua` | xmake 配置（从 lyco-mirror 取 `webview-mini` 包） |
 | `CMakeLists.txt` | CMake 配置（需 `-DWEBVIEW_SDK_DIR`） |
 
 ## License
