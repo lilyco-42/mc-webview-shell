@@ -2,6 +2,15 @@
 
 极小 C 语言 WebView2 壳 - Windows 版 23KB Android WebView 替代品
 
+## 与 `webview-mini` 的关系
+
+两者共用同一个 `webview.h`（单头文件 amalgamation，211 KB），区别只在定位：
+
+- **本仓 `mc-webview-shell`** — 场景成品：针对 MC 控制台，附预编译 exe 与 Clash TUN
+  白屏绕法，开箱即用。
+- **[`webview-mini`](https://github.com/lilyco-42/webview-mini)** — 通用起点：库 + 构建配置 +
+  最小示例，STL-free，适合自己起新项目。
+
 ## 体积对比
 
 | 平台 | 体积 | 依赖 |
